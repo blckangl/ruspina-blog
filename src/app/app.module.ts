@@ -19,6 +19,8 @@ import { ArticleElementComponent } from './components/article-element/article-el
 import {MatChipsModule} from '@angular/material/chips';
 import {MatCardModule} from '@angular/material/card';
 import { ArticleListComponent } from './components/article-list/article-list.component';
+import {MatInputModule} from '@angular/material/input';
+import {ReactiveFormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -42,7 +44,9 @@ import { ArticleListComponent } from './components/article-list/article-list.com
     MatButtonModule,
     MatIconModule,
     MatChipsModule,
-    MatCardModule
+    MatCardModule,
+    MatInputModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
