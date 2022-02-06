@@ -1,0 +1,32 @@
+.container{
+  background-color: var(--primary-color);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .input-container{
+    background-color: white;
+    padding: 16px;
+    min-height: 50%;
+    min-width: 50%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    form{
+      width: 100%;
+
+      padding: 16px;
+      .mat-form-field{
+        width: 100%;
+      }
+    }
+    .actions{
+      button{
+        width: 276px;
+        border-radius: 8px;
+        margin-top: 16px;
+      }
+    }
+  }
+}

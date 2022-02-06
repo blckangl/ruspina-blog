@@ -21,6 +21,11 @@ import {MatCardModule} from '@angular/material/card';
 import { ArticleListComponent } from './components/article-list/article-list.component';
 import {MatInputModule} from '@angular/material/input';
 import {ReactiveFormsModule} from "@angular/forms";
+import {MatSelectModule} from '@angular/material/select';
+import {AngularFireModule} from "@angular/fire/compat";
+import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
+import {AngularFireAuthModule} from "@angular/fire/compat/auth";
+import {environment} from "../environments/environment";
 
 @NgModule({
   declarations: [
@@ -46,7 +51,11 @@ import {ReactiveFormsModule} from "@angular/forms";
     MatChipsModule,
     MatCardModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatSelectModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFirestoreModule, // firestore
+    AngularFireAuthModule, // auth
   ],
   providers: [],
   bootstrap: [AppComponent]
