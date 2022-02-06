@@ -1,22 +1,19 @@
-<section class="container">
-  <div class="title">
-    <p>Article Title</p>
-  </div>
-  <div class="user">
-    <img src="" alt="">
-    <p>ali - 06/02/2022</p>
-  </div>
-  <div class="article">
-    <div class="short-description">
-      Article short description
-    </div>
-    <div class="tags">
-      <mat-chip
-        class="example-box"
-        cdkDrag
-        >
-        c#
-      </mat-chip>
-    </div>
-  </div>
-</section>
+
+<mat-card class="example-card">
+  <mat-card-header>
+    <div mat-card-avatar class="example-header-image"></div>
+    <mat-card-title>Article Title</mat-card-title>
+    <mat-card-subtitle>user - 06/02/2022</mat-card-subtitle>
+  </mat-card-header>
+  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <mat-card-content>
+    <p>
+     Short description
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button mat-button>LIKE</button>
+    <button mat-button>SHARE</button>
+  </mat-card-actions>
+</mat-card>
+

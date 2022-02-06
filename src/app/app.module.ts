@@ -17,6 +17,8 @@ import { ArticlesNavComponent } from './components/articles-nav/articles-nav.com
 import {MatIconModule} from '@angular/material/icon';
 import { ArticleElementComponent } from './components/article-element/article-element.component';
 import {MatChipsModule} from '@angular/material/chips';
+import {MatCardModule} from '@angular/material/card';
+import { ArticleListComponent } from './components/article-list/article-list.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import {MatChipsModule} from '@angular/material/chips';
     HomeLayoutPageComponent,
     TopNavComponent,
     ArticlesNavComponent,
-    ArticleElementComponent
+    ArticleElementComponent,
+    ArticleListComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +41,8 @@ import {MatChipsModule} from '@angular/material/chips';
     BrowserAnimationsModule,
     MatButtonModule,
     MatIconModule,
-    MatChipsModule
+    MatChipsModule,
+    MatCardModule
   ],
   providers: [],
   bootstrap: [AppComponent]
