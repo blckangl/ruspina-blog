@@ -1,0 +1,11 @@
+.container{
+  display: flex;
+  justify-content: space-between;
+  padding: 32px;
+
+  .auth{
+    button{
+      margin-left: 6px;
+    }
+  }
+}

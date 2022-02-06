@@ -1,0 +1,29 @@
+.container{
+  display: flex;
+  justify-content: space-around;
+  align-items: end;
+.search {
+  .search-container{
+    display: flex;
+    border: 1px solid black;
+    border-radius: 8px;
+    width: 100%;
+    padding: 3px;
+    justify-content: space-between;
+    input{
+      border: none;
+    }
+  }
+}
+  .nav{
+    button{
+      border-bottom: 2px solid #eeeeee;
+      border-radius: 0;
+    }&
+    .active{
+           border-bottom: 2px solid var(--primary-color);
+
+         }
+  }
+
+}
