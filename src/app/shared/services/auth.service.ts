@@ -16,4 +16,13 @@ export class AuthService {
     })
 
   }
+
+  signin(email:string,password:string){
+    this.fireBaseAuth.signInWithEmailAndPassword(email,password).then(res=>{
+      console.log(res);
+    }).catch(err=>{
+      console.log("login error",err)
+    })
+  }
+
 }

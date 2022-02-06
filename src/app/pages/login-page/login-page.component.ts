@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl, FormGroupDirective, NgForm, Validators} from "@angular/forms";
 import {ErrorStateMatcher} from "@angular/material/core";
+import {AuthService} from "../../shared/services/auth.service";
 
 
 export class MyErrorStateMatcher implements ErrorStateMatcher {
@@ -17,11 +18,14 @@ export class MyErrorStateMatcher implements ErrorStateMatcher {
 })
 export class LoginPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private authService:AuthService) { }
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   passwordFormControl = new FormControl('', [Validators.required]);
 
   ngOnInit(): void {
+  }
+  login(){
+    this.authService.signin(this.emailFormControl.value,this.passwordFormControl.value)
   }
   matcher = new MyErrorStateMatcher();
 }
