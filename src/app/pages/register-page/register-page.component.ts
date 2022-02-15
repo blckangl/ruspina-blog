@@ -28,18 +28,19 @@ export class RegisterPageComponent implements OnInit {
   }
 
   register() {
-    this.authService.createUser(this.emailFormControl.value, this.passwordFormControl.value)
     // console.log(this.emailFormControl.value)
-    // const user: User =
-    //   {
-    //     birthday: new Date(), date_creation: new Date(),
-    //     id: 'zaez',
-    //     firstName: this.firstNameFormControl.value,
-    //     lastName: this.lastNameFormControl.value,
-    //     email: this.emailFormControl.value,
-    //     country: this.countryFormControl.value,
-    //     password: this.passwordFormControl.value
-    //   }
+    const user: User =
+      {
+        birthday: new Date(), date_creation: new Date(),
+        id: 'zaez',
+        firstName: this.firstNameFormControl.value,
+        lastName: this.lastNameFormControl.value,
+        email: this.emailFormControl.value,
+        country: this.countryFormControl.value,
+        password: this.passwordFormControl.value
+      }
+    this.authService.createUser(this.emailFormControl.value, this.passwordFormControl.value,user)
+
     //   console.log(user);
   }
 

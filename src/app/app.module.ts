@@ -26,6 +26,7 @@ import {AngularFireModule} from "@angular/fire/compat";
 import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
+import {MatMenuModule} from '@angular/material/menu';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import {environment} from "../environments/environment";
     MatInputModule,
     ReactiveFormsModule,
     MatSelectModule,
+    MatMenuModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth

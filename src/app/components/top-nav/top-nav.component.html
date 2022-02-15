@@ -6,8 +6,30 @@
     <button mat-button>Home</button>
 
   </div>
-  <div class="auth">
-    <button mat-raised-button>Login</button>
-    <button mat-raised-button color="primary">Register</button>
+  <div class="auth" *ngIf="!user">
+
+    <a [routerLink]="['login']" mat-raised-button>Login</a>
+    <a [routerLink]="['register']" mat-raised-button color="primary">Register</a>
+  </div>
+  <div class="auth" *ngIf="user">
+
+
+    <button mat-fab color="primary" [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon><span class="material-icons-outlined">
+account_circle
+</span></mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>post_add</mat-icon>
+        <span>Create </span>
+      </button>
+      <button (click)="logout()" mat-menu-item >
+        <mat-icon>logout</mat-icon>
+        <span>Logout</span>
+      </button>
+
+    </mat-menu>
+    <!--    <button (click)="logout()" mat-raised-button>Logout</button>-->
   </div>
 </section>
