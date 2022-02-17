@@ -1,9 +1,10 @@
 <section class="container">
   <div class="nav">
-    <button mat-button class="active">home</button>
-    <button mat-button>Category1</button>
-    <button mat-button>Category2</button>
-    <button mat-button>Category2</button>
+    <button mat-button [ngClass]="{'active':currentPath.toLowerCase()==''}">home</button>
+    <button *ngFor="let category of categories" mat-button [routerLink]="['category',category]"
+            [ngClass]="{'active':currentPath.toLowerCase().includes(category.toLowerCase())}"
+    >{{category}}</button>
+
 
   </div>
   <div class="search">

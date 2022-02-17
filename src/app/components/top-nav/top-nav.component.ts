@@ -1,21 +1,31 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewChecked, Component, OnInit} from '@angular/core';
 import {AuthService} from "../../shared/services/auth.service";
-import {User} from "../../shared/models/user";
+import {IUser} from "../../shared/models/user";
 
 @Component({
   selector: 'app-top-nav',
   templateUrl: './top-nav.component.html',
   styleUrls: ['./top-nav.component.scss']
 })
-export class TopNavComponent implements OnInit {
+export class TopNavComponent implements OnInit,AfterViewChecked {
 
-  user!: User | undefined;
+  user!: IUser | undefined;
 
   constructor(private authService: AuthService) {
   }
 
+  ngAfterViewChecked(): void {
+    if (this.authService.isAuth()) {
+      let userData = localStorage.getItem('user');
+      if (userData)
+        this.user = JSON.parse(userData)
+    } else {
+      this.user = undefined
+    }
+    }
+
   ngOnInit(): void {
-    this.user = this.authService.user;
+
   }
 
   logout() {

@@ -25,17 +25,33 @@ export class ArticleService {
       this.fireStore.collection("articles").doc(res.id).set(payload).then(article => {
         this._snackBar.open('Article created with success', 'Creation', {duration: 3000})
       }).catch(err => {
-        this._snackBar.open(err,'Creation', {duration: 3000})
+        this._snackBar.open(err, 'Creation', {duration: 3000})
 
       });
     }).catch(err => {
-      this._snackBar.open(err,'Creation', {duration: 3000})
+      this._snackBar.open(err, 'Creation', {duration: 3000})
     })
   }
-  getArticles():AngularFirestoreCollection<Article>{
-    return this.fireStore.collection('articles')
+
+  getArticles(category: string | undefined = undefined): AngularFirestoreCollection<Article> {
+
+    if (category) {
+      return this.fireStore.collection('articles', ref => {
+        return ref.where('category', '==', category)
+      })
+    } else {
+      return this.fireStore.collection('articles')
+
+    }
   }
-  getArticle(id:string):AngularFirestoreDocument<Article>{
-    return this.fireStore.doc('articles/'+id)
+
+  getArticle(id: string): AngularFirestoreDocument<Article> {
+    return this.fireStore.doc('articles/' + id)
+  }
+
+  likeArticle(article: Article) {
+    let articleTemp = {...article};
+    articleTemp.likes++;
+    this.fireStore.doc('articles/' + article.id).set(articleTemp)
   }
 }

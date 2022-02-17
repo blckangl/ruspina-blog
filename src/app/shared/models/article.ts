@@ -4,6 +4,7 @@ export interface Article {
   description: string;
   content: string;
   img: string;
+  category: string;
   createdBy: string;
   likes: number;
   comments: Array<Comment>;

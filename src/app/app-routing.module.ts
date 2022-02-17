@@ -8,14 +8,15 @@ import {CategoryArticlePageComponent} from "./pages/category-article-page/catego
 import {HomeLayoutPageComponent} from "./pages/home-layout-page/home-layout-page.component";
 import {CreateArticleComponent} from "./pages/create-article/create-article.component";
 import {ArticlePageComponent} from "./pages/article-page/article-page.component";
+import {AuthGuard} from "./shared/auth.guard";
 
 const routes: Routes = [
   {path:'',component:HomeLayoutPageComponent ,children:[
-      {path:'',component:HomePageComponent},
-      {path:'category',component:CategoryArticlePageComponent}
+      {path:'',component:HomePageComponent,canActivate:[AuthGuard]},
+      {path:'category/:cat',component:CategoryArticlePageComponent,canActivate:[AuthGuard]}
     ]},
-  {path:'create',component:CreateArticleComponent},
-  {path:'article/:id',component:ArticlePageComponent},
+  {path:'create',component:CreateArticleComponent,canActivate:[AuthGuard]},
+  {path:'article/:id',component:ArticlePageComponent,canActivate:[AuthGuard]},
   {path:'login',component:LoginPageComponent},
   {path:'register',component:RegisterPageComponent},
   {path:'**',component:NotFoundPageComponent}

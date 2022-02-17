@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Article} from "../../shared/models/article";
+import {ArticleService} from "../../shared/services/article.service";
 
 @Component({
   selector: 'app-article-element',
@@ -9,9 +10,12 @@ import {Article} from "../../shared/models/article";
 export class ArticleElementComponent implements OnInit {
 
   @Input() article!:Article;
-  constructor() { }
+  constructor(private articleService:ArticleService) { }
 
   ngOnInit(): void {
   }
 
+  like() {
+    this.articleService.likeArticle(this.article)
+  }
 }

@@ -249,3 +249,4 @@ export const countryList = [
   "Zimbabwe",
   "Åland Islands"
 ];
+export const categories = ['Computer','Sci-fi','Fantasy','Action']

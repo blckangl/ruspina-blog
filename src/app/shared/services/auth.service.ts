@@ -1,49 +1,42 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {User} from "../models/user";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
 import {Observable} from "rxjs";
+import firebase from "firebase/compat";
+import User = firebase.User;
+import {IUser} from "../models/user";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  public user!: User | undefined;
+  public user!: User;
 
   constructor(private fireBaseAuth: AngularFireAuth, private fireStore: AngularFirestore, private router: Router) {
     this.fireBaseAuth.authState.subscribe(state => {
-      if (state && state.uid) {
-        this.fireStore.collection('users').doc(state.uid).valueChanges().subscribe(user => {
-
-          if (state) {
-            this.user = user as User;
-            // this.router.navigate([''])
-            console.log("nav to home")
-          }
-
-
-        })
-
+      if (state) {
+        console.log("setting localstorage")
+        localStorage.setItem('user', JSON.stringify(state))
+        this.user = state;
       } else {
-        this.user = undefined
-        console.log("nav to login")
-        this.router.navigate(['login'])
+        localStorage.setItem('user', '')
+
       }
       console.log("state ", state)
     })
   }
 
 
-  createUser(email: string, password: string, payload: User) {
+  createUser(email: string, password: string, payload: IUser) {
 
     this.fireBaseAuth.createUserWithEmailAndPassword(email, password).then(res => {
       console.log("creation result ", res.user?.uid)
-      let userObj: User = {...payload};
+      let userObj: IUser = {...payload};
       if (res.user?.uid) {
-        userObj.id = res.user?.uid
-        return this.fireStore.collection('users').doc(userObj.id).set(userObj).then(res => {
+         userObj.id = res.user?.uid
+        return this.fireStore.collection('users').doc(res.user.uid).set(userObj).then(res => {
           this.router.navigate(['login'])
         })
       }
@@ -54,21 +47,22 @@ export class AuthService {
 
   }
 
-  signin(email: string, password: string) {
-    this.fireBaseAuth.signInWithEmailAndPassword(email, password)
+  signin(email: string, password: string): Promise<any> {
+    return this.fireBaseAuth.signInWithEmailAndPassword(email, password)
 
   }
 
   signout() {
     this.fireBaseAuth.signOut().then(res => {
-
+      this.router.navigate(['login'])
     });
 
   }
 
 
   isAuth() {
-    if (this.user) {
+    let userData = localStorage.getItem('user')
+    if (userData && userData.length > 0) {
       return true;
     } else {
       return false;
