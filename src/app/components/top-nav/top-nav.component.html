@@ -20,10 +20,10 @@ account_circle
 </span></mat-icon>
     </button>
     <mat-menu #menu="matMenu">
-      <button mat-menu-item>
+      <a [routerLink]="['create']"  mat-menu-item>
         <mat-icon>post_add</mat-icon>
         <span>Create </span>
-      </button>
+      </a>
       <button (click)="logout()" mat-menu-item >
         <mat-icon>logout</mat-icon>
         <span>Logout</span>

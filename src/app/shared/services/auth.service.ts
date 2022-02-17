@@ -3,6 +3,7 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {User} from "../models/user";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {Router} from "@angular/router";
+import {Observable} from "rxjs";
 
 @Injectable({
   providedIn: 'root'
@@ -13,14 +14,22 @@ export class AuthService {
 
   constructor(private fireBaseAuth: AngularFireAuth, private fireStore: AngularFirestore, private router: Router) {
     this.fireBaseAuth.authState.subscribe(state => {
-      if(state && state.uid){
+      if (state && state.uid) {
         this.fireStore.collection('users').doc(state.uid).valueChanges().subscribe(user => {
-          this.user = user as User;
-          // this.router.navigate([''])
+
+          if (state) {
+            this.user = user as User;
+            // this.router.navigate([''])
+            console.log("nav to home")
+          }
+
+
         })
 
-      }else{
+      } else {
         this.user = undefined
+        console.log("nav to login")
+        this.router.navigate(['login'])
       }
       console.log("state ", state)
     })
@@ -46,26 +55,16 @@ export class AuthService {
   }
 
   signin(email: string, password: string) {
-    this.fireBaseAuth.signInWithEmailAndPassword(email, password).then(res => {
-      if (res.user?.uid) {
-        this.fireStore.collection('users').doc(res.user.uid).valueChanges().subscribe(user => {
-          this.user = user as User;
-          this.router.navigate([''])
-        })
+    this.fireBaseAuth.signInWithEmailAndPassword(email, password)
 
-      }
-    }).catch(err => {
-      console.log("login error", err)
-    })
   }
 
   signout() {
     this.fireBaseAuth.signOut().then(res => {
-      this.router.navigate(['login'])
+
     });
 
   }
-
 
 
   isAuth() {

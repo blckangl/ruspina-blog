@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ArticleService} from "../../shared/services/article.service";
+import {Article} from "../../shared/models/article";
 
 @Component({
   selector: 'app-home-page',
@@ -7,9 +9,15 @@ import { Component, OnInit } from '@angular/core';
 })
 export class HomePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(private articleService: ArticleService) {
+  }
+
+  articles!: Array<Article>
 
   ngOnInit(): void {
+    this.articleService.getArticles().valueChanges().subscribe(articles => {
+      this.articles = articles
+    })
   }
 
 }

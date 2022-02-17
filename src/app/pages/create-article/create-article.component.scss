@@ -1,0 +1,13 @@
+.container{
+  padding: 16px;
+
+  form{
+    display: flex;
+    flex-direction: column;
+  }
+  .actions{
+    button{
+      width: 100%;
+    }
+  }
+}

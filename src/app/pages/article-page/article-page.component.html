@@ -1,1 +1,39 @@
-<p>article-page works!</p>
+<app-top-nav></app-top-nav>
+<section class="container">
+  <h2>{{article.title}}</h2>
+    <div class="img-container">
+      <img [src]="article.img" alt="">
+    </div>
+  <p class="description">{{article.description}}</p>
+  <p>{{article.content}}</p>
+
+
+  <mat-accordion>
+    <mat-expansion-panel hideToggle>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <mat-icon>chat</mat-icon>
+          Comments
+        </mat-panel-title>
+
+      </mat-expansion-panel-header>
+      <mat-list>
+        <mat-list-item>Item 1</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Item 2</mat-list-item>
+        <mat-divider></mat-divider>
+        <mat-list-item>Item 3</mat-list-item>
+      </mat-list>
+
+      <div class="form-container">
+        <mat-form-field class="example-full-width" appearance="fill">
+          <mat-label>Your comment</mat-label>
+          <input matInput placeholder="Comment" value="">
+        </mat-form-field>
+        <button mat-raised-button color="primary">Primary</button>
+      </div>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+</section>

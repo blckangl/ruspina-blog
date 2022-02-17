@@ -1,0 +1,40 @@
+<app-top-nav></app-top-nav>
+
+<div class="container">
+  <form action="">
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Title</mat-label>
+      <input type="text" matInput [formControl]="titleFormControl"
+             placeholder="Ex. pat@example.com">
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Description</mat-label>
+      <input type="text" matInput [formControl]="descriptionFormControl"
+      >
+
+    </mat-form-field>
+
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Content</mat-label>
+      <textarea type="text" matInput [formControl]="contentFromControl"></textarea>
+
+
+    </mat-form-field>
+    <mat-form-field class="example-full-width" appearance="fill">
+      <mat-label>Picture</mat-label>
+      <input type="text" matInput [formControl]="pictureFormControl"
+      >
+
+    </mat-form-field>
+
+
+
+
+  </form>
+  <div class="actions">
+    <button (click)="addArticle()" mat-raised-button color="primary">Create</button>
+
+  </div>
+</div>

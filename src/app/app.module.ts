@@ -27,6 +27,11 @@ import {AngularFirestoreModule} from "@angular/fire/compat/firestore";
 import {AngularFireAuthModule} from "@angular/fire/compat/auth";
 import {environment} from "../environments/environment";
 import {MatMenuModule} from '@angular/material/menu';
+import { CreateArticleComponent } from './pages/create-article/create-article.component';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatExpansionModule} from '@angular/material/expansion';
+import {MatDividerModule} from '@angular/material/divider';
+import {MatListModule} from '@angular/material/list';
 
 @NgModule({
   declarations: [
@@ -41,7 +46,8 @@ import {MatMenuModule} from '@angular/material/menu';
     TopNavComponent,
     ArticlesNavComponent,
     ArticleElementComponent,
-    ArticleListComponent
+    ArticleListComponent,
+    CreateArticleComponent
   ],
   imports: [
     BrowserModule,
@@ -55,6 +61,10 @@ import {MatMenuModule} from '@angular/material/menu';
     ReactiveFormsModule,
     MatSelectModule,
     MatMenuModule,
+    MatSnackBarModule,
+    MatExpansionModule,
+    MatDividerModule,
+    MatListModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
